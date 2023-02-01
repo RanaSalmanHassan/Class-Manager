@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up</title>
+    <style>
+        .signup{
+            background-color: red;
+            color: white;
+            margin-top: 15px;
+            width: 80px;
+            height: 40px;
+            transition: opacity 1s;
+            font-size: 25px;
+        }
+        .signup:hover{
+            opacity: 0.5;
+        }
+        .signupform{
+            margin-bottom: 20px;
+            border: 1px solid lightgr
+            ay;
+        }
+        .login-link{
+            color: dodgerblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="signupform">
+        <form method="post">
+            {%csrf_token%}
+            {{form.as_p}}
+            <button class="signup">Sign Up</button>
+        </form>
+
+    </div>
+
+    <a href="{%url 'loginapp:Login'%}" class="login-link">Have a Freaking Account?</a>
+
+
+</body>
+</html>

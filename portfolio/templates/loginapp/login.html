@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <style>
+        .login {
+            background-color: lightcoral;
+            color: white;
+            margin-top: 15px;
+            width: 80px;
+            height: 40px;
+            transition: opacity 1s;
+            font-size: 25px;
+        }
+
+        .login:hover {
+            opacity: 0.3;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form method="post">
+            {%csrf_token%}
+            {{form.as_p}}
+            <button class="login">Login</button>
+        </form>
+
+    </div>
+</body>
+
+<a href="{%url 'loginapp:SignUp'%}" >Don`t Have a Freaking Account?</a>
+</html>
