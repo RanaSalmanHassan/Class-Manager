@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block titleblock %}
+Student Profile
+{% endblock titleblock %}
+
+{% block bodyblock %}
+
+<div>
+    <div>
+        {{user.student_profile.profile_pic}}
+    </div>
+
+    <div>
+        {{user.username}}
+    </div>
+</div>
+
+{% endblock bodyblock %}

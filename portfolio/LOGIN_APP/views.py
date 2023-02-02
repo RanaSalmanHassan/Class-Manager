@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from .forms import SignUpForm,LoginForm
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -41,3 +42,23 @@ def Login(request):
 
     dict = {'form':form}
     return render(request,'loginapp/login.html',dict)
+
+
+@login_required(login_url='loginapp:Login')
+def teacher_profile(request):
+    current_user = request.user
+    if current_user.is_teacher:
+        return render(request,'loginapp/teacher_profile.html')
+    else:
+        return render(request,'loginapp/student_profile.html')
+
+
+@login_required(login_url='loginapp:Login')
+def student_profile(request):
+    current_user = request.user
+    if current_user.is_student:
+        return render(request,'loginapp/student_profile.html')
+
+    else:
+        return render(request,'loginapp/teacher_profile.html')
+

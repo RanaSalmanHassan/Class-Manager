@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from .models import User
 from captcha.fields import CaptchaField
 
+
 class SignUpForm(UserCreationForm):
     captcha = CaptchaField()
     class Meta:
