@@ -4,7 +4,7 @@ Sign Up
 {% endblock titleblock %}
 
 {% block bodyblock %}
-<style>
+<!-- <style>
     .signup-button {
         background-color: darkcyan;
         color: white;
@@ -39,7 +39,11 @@ Sign Up
         <button class="signup-button">Sign Up</button>
     </form>
 
-</div>
+</div> -->
 
+<a href="{%url 'loginapp:Student_Sign_Up'%}">I`m a student!</a>
+<br>
+<a href="{%url 'loginapp:Teacher_Sign_Up'%}">I`m a Teacher!</a>
+<br>
 <a href="{%url 'loginapp:Login'%}" class="login-link">Have a Freaking Account?</a>
 {% endblock bodyblock %}

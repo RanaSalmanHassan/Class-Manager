@@ -1,18 +1,14 @@
 {% extends 'base.html' %}
+
 {% block titleblock %}
-Student Profile
+Edit Profile
 {% endblock titleblock %}
 
 {% block bodyblock %}
+{%if Student.profile_pic%}
+<img src="{{Student.profile_pic.url}}" alt="">
+{%endif%}
+<p>{{Student.contact_num}}</p>
 
-<div>
-    <div>
-        {{user.student_profile.profile_pic}}
-    </div>
-
-    <div>
-        {{user.username}}
-    </div>
-</div>
-
+<a href="{%url 'loginapp:edit_profile'%}">Edit Profile</a>
 {% endblock bodyblock %}

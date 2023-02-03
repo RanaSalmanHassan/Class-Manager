@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
+
 {% block titleblock %}
-Teacher Profile
+Profile
 {% endblock titleblock %}
 
 {% block bodyblock %}
+<p><img src="{{Teacher.profile_pic.url}}" alt=""></p>
+<p>{{Teacher.contact_num}}</p>
 
-<div>
-    <div>
-        {{user.teacher_profile.profile_pic}}
-    </div>
-</div>
 
+<a href="{%url 'loginapp:edit_profile'%}">Edit Profile</a>
 {% endblock bodyblock %}
