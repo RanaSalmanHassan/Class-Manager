@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block titleblock %}
+Student Home
+{% endblock titleblock %}
+
+{% block bodyblock %}
+
+<form method="post">
+	{%csrf_token%}
+	{{form.as_p}}
+	<button type="submit" class="btn btn-outline-success">Send!</button>
+</form>
+
+
+
+{% endblock bodyblock %}
+

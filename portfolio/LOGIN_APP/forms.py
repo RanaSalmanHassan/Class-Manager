@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
-from .models import User,TeacherProfile,StudentProfile
+from .models import User,TeacherProfile,StudentProfile,Message
 from captcha.fields import CaptchaField
 
 
@@ -35,3 +35,8 @@ class Edit_Student_Form(forms.ModelForm):
     class Meta:
         model = StudentProfile
         exclude = ('student',)
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        exclude = ('user_sender',)

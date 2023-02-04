@@ -92,7 +92,14 @@ def Login(request):
             user = authenticate(username=username, password=raw_password)
             if user is not None:
                 login(request, user)
-                return HttpResponseRedirect(reverse('loginapp:edit_profile'))
+                # return HttpResponseRedirect(reverse('loginapp:edit_profile'))
+                if user.is_teacher:
+                    return HttpResponse('<h1>You are a Teacher</h1>')
+
+                elif user.is_student:
+                    return HttpResponseRedirect(reverse('student_app:student_home'))
+                else:
+                    return HttpResponse('You are not welcomed here!')
 
     dict = {'form': form}
     return render(request, 'loginapp/login.html', dict)

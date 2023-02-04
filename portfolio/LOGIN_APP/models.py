@@ -18,3 +18,10 @@ class StudentProfile(models.Model):
     student = models.OneToOneField(User,on_delete=models.CASCADE,related_name='student_profile')
     profile_pic = models.ImageField(upload_to='student_profile',blank=True)
     contact_num = models.CharField(max_length=11)
+
+class Message(models.Model):
+    user_sender = models.ForeignKey(User,on_delete=models.CASCADE,related_name='sender')
+    user_reciever = models.ForeignKey(User,on_delete=models.CASCADE,related_name='user_recipent')
+    date_messaged = models.DateTimeField(auto_now_add=True)
+    message = models.TextField()
+    attachments = models.FileField(blank=True,upload_to='student_assignments')

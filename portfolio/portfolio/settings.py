@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'LOGIN_APP',
-    'captcha'
+    'captcha',
+    'Student_App',
+    'Teacher_App',
 
 ]
 

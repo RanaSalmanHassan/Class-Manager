@@ -21,7 +21,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns,static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('captcha',include('captcha.urls')),
-    path('loginapp/', include('LOGIN_APP.urls'))
+    path('loginapp/', include('LOGIN_APP.urls')),
+    path('student_app/', include('Student_App.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
