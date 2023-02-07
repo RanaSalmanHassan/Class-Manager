@@ -1,14 +1,28 @@
 {% extends 'base.html' %}
 
 {% block titleblock %}
-Edit Profile
+Profile
 {% endblock titleblock %}
 
 {% block bodyblock %}
-{%if Student.profile_pic%}
-<img src="{{Student.profile_pic.url}}" alt="">
-{%endif%}
-<p>{{Student.contact_num}}</p>
 
-<a href="{%url 'loginapp:edit_profile'%}">Edit Profile</a>
+<div
+    style="display: flex; justify-content: center; align-items: center;flex-direction: column; border: 1px solid lightgray; position: relative;">
+    <div style="width: 1fr;">
+        {%if Student.profile_pic%}
+        <img src="{{Student.profile_pic.url}}" style="width: 400px; border-radius: 200px;">
+        {%else%}
+        <img src="/media/student_profile/user.png" alt="">
+        {%endif%}
+    </div>
+    <div>
+        <p style="font-size: 30px;">Username : {{user.username}}</p>
+        <p style="font-size: 30px;">Contact Num : {{Student.contact_num}}</p>
+    </div>
+    <a href="{%url 'loginapp:edit_profile'%}" style="position: fixed; right: 50px; top: 120px; position: absolute;"><button
+            class="btn btn-outline-primary">Edit Profile!</button></a>
+</div>
+
+
+
 {% endblock bodyblock %}

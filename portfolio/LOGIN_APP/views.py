@@ -45,7 +45,7 @@ def Teacher_Sign_Up(request):
             # return HttpResponse('Signed Up')
             return HttpResponseRedirect(reverse('loginapp:Login'))
         else:
-            print(form.errors, profile.errors)
+            messages.warning(request,f' There is error in your form : {form.errors} {profile.errors}')
 
     else:
         form = SignUpForm()
@@ -70,6 +70,10 @@ def Student_Sign_Up(request):
 
             # return HttpResponse('Signed Up')
             return HttpResponseRedirect(reverse('loginapp:Login'))
+
+        else:
+            messages.warning(
+                request, f' There is error in your form : {form.errors} {profile.errors}')
     else:
         form = SignUpForm()
         profile = Student_Profile_Form()
@@ -94,12 +98,15 @@ def Login(request):
                 login(request, user)
                 # return HttpResponseRedirect(reverse('loginapp:edit_profile'))
                 if user.is_teacher:
-                    return HttpResponse('<h1>You are a Teacher</h1>')
+                    return HttpResponseRedirect(reverse('teacher_app:teacher_home'))
 
                 elif user.is_student:
                     return HttpResponseRedirect(reverse('student_app:student_home'))
                 else:
                     return HttpResponse('You are not welcomed here!')
+        else:
+            messages.warning(
+                request, f' There is error in your form : {form.errors} ')
 
     dict = {'form': form}
     return render(request, 'loginapp/login.html', dict)
@@ -140,7 +147,7 @@ def profile(request):
     if current_user.is_teacher:
         Teacher = TeacherProfile.objects.get(teacher=current_user)
         dict = {'Teacher':Teacher}
-        return render(request,'loginapp/teacher_profile.html')
+        return render(request,'loginapp/teacher_profile.html',dict)
     elif current_user.is_student:
         Student = StudentProfile.objects.get(student=current_user)
         dict = {'Student':Student}

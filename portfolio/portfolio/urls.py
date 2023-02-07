@@ -23,6 +23,7 @@ urlpatterns = [
     path('captcha',include('captcha.urls')),
     path('loginapp/', include('LOGIN_APP.urls')),
     path('student_app/', include('Student_App.urls')),
+    path('teacher_app/', include('Teacher_App.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

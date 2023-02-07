@@ -3,28 +3,15 @@
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0"
+            style="display: flex; justify-content: center; align-content: center;">
             {%if user.is_authenticated%}
             {%if user.is_student%}
             <li class="nav-item">
                <a class="nav-link active" aria-current="page" href="{%url 'student_app:student_home'%}">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-               Profile
-               </a>
-               <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{%url 'loginapp:profile'%}">My Profile</a></li>
-                  <li><a class="dropdown-item" href="{%url 'student_app:messages_all'%}">My Messages</a></li>
-                  <li>
-                     <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-               </ul>
             </li>
             <li class="nav-item">
                <a class="nav-link" href="{%url 'loginapp:Logout'%}">Logout</a>
@@ -32,26 +19,50 @@
             <li class="nav-item">
                <a class="nav-link" href="{%url 'student_app:message_to_teacher'%}">Message</a>
             </li>
+            {%if user.student_profile.profile_pic %}
+            <li class="nav-item">
+               <a class="nav-link" href="{%url 'loginapp:profile'%}" style="margin-left: 600px;"><img
+                     src="{{user.student_profile.profile_pic.url}}"
+                     style="width: 50px;height: 40px; border-radius: 25px;"></a>
+            </li>
             {%else%}
             <li class="nav-item">
-               <a class="nav-link active" aria-current="page" href="{%url 'student_app:student_home'%}">Home</a>
+               <a class="nav-link" href="{%url 'loginapp:profile'%}" style="margin-left: 600px;"><img
+                     src="/media/student_profile/user.png" style="width:30px"></a>
             </li>
-            <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-               Profile
-               </a>
-               <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{%url 'loginapp:profile'%}">My Profile</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                     <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-               </ul>
+            {%endif%}
+
+            <li class="nav-item">
+               <a class="nav-link" href="{%url 'student_app:messages_all'%}"><img
+                     src="/media/student_profile/download.png" style="width: 30px; height: 30px;"></a>
+            </li>
+
+            {%else%}
+            <li class="nav-item">
+               <a class="nav-link active" aria-current="page" href="{%url 'teacher_app:teacher_home'%}">Home</a>
             </li>
             <li class="nav-item">
                <a class="nav-link" href="{%url 'loginapp:Logout'%}">Logout</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="{%url 'teacher_app:message_to_student'%}">Message</a>
+            </li>
+            {%if user.teacher_profile.profile_pic %}
+            <li class="nav-item">
+               <a class="nav-link" href="{%url 'loginapp:profile'%}" style="margin-left: 600px;"><img
+                     src="{{user.student_profile.profile_pic.url}}"
+                     style="width: 50px;height: 40px; border-radius: 25px;"></a>
+            </li>
+            {%else%}
+            <li class="nav-item">
+               <a class="nav-link" href="{%url 'loginapp:profile'%}" style="margin-left: 600px;"><img
+                     src="/media/student_profile/user.png" style="width:30px"></a>
+            </li>
+            {%endif%}
+
+            <li class="nav-item">
+               <a class="nav-link" href="{%url 'teacher_app:messages_all'%}"><img
+                     src="/media/student_profile/download.png" style="width: 30px; height: 30px;"></a>
             </li>
             {%endif%}
             {%else%}
