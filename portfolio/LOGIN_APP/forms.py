@@ -13,7 +13,6 @@ class SignUpForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     captcha = CaptchaField()
 
-
 class Teacher_Profile_Form(forms.ModelForm):
     class Meta:
         model = TeacherProfile

@@ -1,46 +1,105 @@
 {% extends 'base.html' %}
+
 {% block titleblock %}
-Login
+Login Page
 {% endblock titleblock %}
 
 {% block bodyblock %}
 <style>
-    .login {
-        background-color: darkcyan;
+    .main-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    .img-div{
+        position: absolute;
+        top: -23px;
+    }
+    .img {
+        width: 50px;
+        border-radius: 50%;
+    }
+
+    .rest-div {
+        background-color: rgb(224, 51, 94);
+    }
+
+    .login-title {
+        font-family: Arial, Helvetica, sans-serif;
         color: white;
-        margin-top: 15px;
-        width: 80px;
-        height: 40px;
-        transition: opacity 0.4s;
-        border-radius: 40px;
-        font-size: large;
+        font-size: 30px;
+        margin-left: 100px;
+        margin-right: 50px;
+        margin-top: 50px;
+        
     }
 
-    .login:hover {
-        opacity: 0.3;
+    .username-field,
+    .password-field {
+        margin-top: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
     }
 
-    .loginform {
-        background-color: lightgray;
+    .login-button {
+        width: 150px;
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-top: 50px;
+        background-color: rgb(0, 0, 136);
+        color: white;
+        border-radius: 10%;
     }
 
     .signup-link {
-        color: dodgerblue;
-        font-size: 25px;
+        font-size: 13px;
+        color: white;
+    }
+
+    .signup-div-link {
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-top: 30px;
+        margin-bottom: 100px;
     }
 </style>
-</head>
 
-<body>
-    <div class="loginform">
-        <form method="post">
-            {%csrf_token%}
-            {{form.as_p}}
-            <button class="login">Login</button>
-        </form>
-
+<div class="main-div">
+    <div class="img-div">
+        <img src="/media/student_profile/user.png" class="img">
     </div>
-</body>
 
-<a href="{%url 'loginapp:SignUp'%}" class="signup-link">Don`t Have a Freaking Account?</a>
+    <div class="rest-div">
+        <div class="login-title">
+            Login
+        </div>
+        <div class="username-field">
+            <div class="username">
+                Username
+            </div>
+            <div class="enter-username">
+                <p>{{form.username}}</p>
+            </div>
+        </div>
+
+        <div class="password-field">
+            <div class="password">
+                Passowrd
+            </div>
+            <div class="enter-password">
+                {{form.password}}
+            </div>
+        </div>
+
+        <div class="button-div">
+            <button type="submit" class="login-button">Login</button>
+        </div>
+
+        <div class="signup-div-link">
+            <a href="{%url 'loginapp:SignUp'%}" class="signup-link">Don`t have an account?</a>
+        </div>
+    </div>
+</div>
 {% endblock bodyblock %}
