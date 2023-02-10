@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns,static
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +25,7 @@ urlpatterns = [
     path('loginapp/', include('LOGIN_APP.urls')),
     path('student_app/', include('Student_App.urls')),
     path('teacher_app/', include('Teacher_App.urls')),
+    path('',views.home)
 ]
 
 urlpatterns += staticfiles_urlpatterns()

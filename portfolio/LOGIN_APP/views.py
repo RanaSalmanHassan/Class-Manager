@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
-from .forms import SignUpForm, LoginForm, Teacher_Profile_Form, Student_Profile_Form,Edit_Student_Form,Edit_Teacher_Form
+from .forms import SignUpForm, LoginForm, Teacher_Profile_Form, Student_Profile_Form, Edit_Student_Form, Edit_Teacher_Form
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from .models import StudentProfile,TeacherProfile
+from .models import StudentProfile, TeacherProfile
 # Create your views here.
 
 
@@ -45,7 +45,14 @@ def Teacher_Sign_Up(request):
             # return HttpResponse('Signed Up')
             return HttpResponseRedirect(reverse('loginapp:Login'))
         else:
-            messages.warning(request,f' There is error in your form : {form.errors} {profile.errors}')
+            error_message = "There is an error in your form: "
+            for field in form:
+                for error in field.errors:
+                    error_message += error
+            for field in profile:
+                for error in field.errors:
+                    error_message += error
+            messages.warning(request, error_message)
 
     else:
         form = SignUpForm()
@@ -72,8 +79,15 @@ def Student_Sign_Up(request):
             return HttpResponseRedirect(reverse('loginapp:Login'))
 
         else:
-            messages.warning(
-                request, f' There is error in your form : {form.errors} {profile.errors}')
+
+            error_message = "There is an error in your form: "
+            for field in form:
+                for error in field.errors:
+                    error_message += error
+            for field in profile:
+                for error in field.errors:
+                    error_message += error
+            messages.warning(request, error_message)
     else:
         form = SignUpForm()
         profile = Student_Profile_Form()
@@ -105,8 +119,14 @@ def Login(request):
                 else:
                     return HttpResponse('You are not welcomed here!')
         else:
-            messages.warning(
-                request, f' There is error in your form : {form.errors} ')
+            # messages.warning(
+            #     request, f' There is error in your form : {form.errors} ')
+
+            error_message = "There is an error in your form: "
+            for field in form:
+                for error in field.errors:
+                    error_message += error
+            messages.warning(request, error_message)
 
     dict = {'form': form}
     return render(request, 'loginapp/login.html', dict)
@@ -119,7 +139,8 @@ def edit_profile(request):
         student = StudentProfile.objects.get(student=current_user)
         form = Edit_Student_Form(instance=student)
         if request.method == 'POST':
-            form = Edit_Student_Form(request.POST,request.FILES,instance=student)
+            form = Edit_Student_Form(
+                request.POST, request.FILES, instance=student)
             if form.is_valid():
                 form.save()
                 form = Edit_Student_Form(instance=student)
@@ -138,23 +159,25 @@ def edit_profile(request):
                 form = Edit_Teacher_Form(instance=student)
                 # return HttpResponse('Edited')
                 return HttpResponseRedirect(reverse('loginapp:profile'))
-        dict = {'form':form}
-        return render(request,'loginapp/edit_profile.html',dict)
+        dict = {'form': form}
+        return render(request, 'loginapp/edit_profile.html', dict)
+
 
 @login_required(login_url='loginapp:Login')
 def profile(request):
     current_user = request.user
     if current_user.is_teacher:
         Teacher = TeacherProfile.objects.get(teacher=current_user)
-        dict = {'Teacher':Teacher}
-        return render(request,'loginapp/teacher_profile.html',dict)
+        dict = {'Teacher': Teacher}
+        return render(request, 'loginapp/teacher_profile.html', dict)
     elif current_user.is_student:
         Student = StudentProfile.objects.get(student=current_user)
-        dict = {'Student':Student}
-        return render(request,'loginapp/student_profile.html',dict)
+        dict = {'Student': Student}
+        return render(request, 'loginapp/student_profile.html', dict)
 
     else:
         return HttpResponse('Sorry You Don`t Have an Account!')
+
 
 @login_required(login_url='loginapp:Login')
 def Logout(request):
