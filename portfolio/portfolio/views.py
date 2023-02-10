@@ -9,6 +9,6 @@ def home(request):
         elif request.user.is_student:
             return HttpResponseRedirect(reverse('loginapp:profile'))
         else:
-            return HttpResponse('<h1> You are a hacker!!!<h1>')
+            return HttpResponseRedirect(reverse('loginapp:Login'))
     else:
         return HttpResponseRedirect(reverse('loginapp:SignUp'))

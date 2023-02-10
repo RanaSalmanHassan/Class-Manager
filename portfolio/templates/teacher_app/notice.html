@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block titleblock %}
-Send Messages!
+Send Notice!
 {% endblock titleblock %}
 
 {% block bodyblock %}
 
-<form method="post">
+<form method="post" >
     {%csrf_token%}
     {{form.as_p}}
     <button type="submit" class="btn btn-outline-success">Send!</button>

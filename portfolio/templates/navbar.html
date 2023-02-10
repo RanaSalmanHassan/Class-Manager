@@ -50,7 +50,7 @@
             {%if user.teacher_profile.profile_pic %}
             <li class="nav-item">
                <a class="nav-link" href="{%url 'loginapp:profile'%}" style="margin-left: 600px;"><img
-                     src="{{user.student_profile.profile_pic.url}}"
+                     src="{{user.teacher_profile.profile_pic.url}}"
                      style="width: 50px;height: 40px; border-radius: 25px;"></a>
             </li>
             {%else%}

@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block titleblock %}
-Send Messages!
+Send Assignments!
 {% endblock titleblock %}
 
 {% block bodyblock %}
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {%csrf_token%}
     {{form.as_p}}
     <button type="submit" class="btn btn-outline-success">Send!</button>
