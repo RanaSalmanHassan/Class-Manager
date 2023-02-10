@@ -6,6 +6,16 @@ Login Page
 
 {% block bodyblock %}
 <style>
+    html{
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-image: url('/media/extra_pics/classroom.jpeg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
     .main-div {
         display: flex;
         flex-direction: column;
@@ -65,12 +75,13 @@ Login Page
         margin-bottom: 100px;
     }
 </style>
-
+<form method="post">
+    {%csrf_token%}
 <div class="main-div">
     <div class="img-div">
         <img src="/media/student_profile/user.png" class="img">
     </div>
-
+    
     <div class="rest-div">
         <div class="login-title">
             Login
@@ -89,7 +100,16 @@ Login Page
                 Passowrd
             </div>
             <div class="enter-password">
-                {{form.password}}
+                <p>{{form.password}}</p>
+            </div>
+        </div>
+
+        <div class="password-field">
+            <div class="password">
+                Captcha
+            </div>
+            <div class="enter-password">
+                <p>{{form.captcha}}</p>
             </div>
         </div>
 
@@ -100,6 +120,7 @@ Login Page
         <div class="signup-div-link">
             <a href="{%url 'loginapp:SignUp'%}" class="signup-link">Don`t have an account?</a>
         </div>
+        </form>
     </div>
 </div>
 {% endblock bodyblock %}

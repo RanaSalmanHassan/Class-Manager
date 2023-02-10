@@ -4,46 +4,77 @@ Sign Up
 {% endblock titleblock %}
 
 {% block bodyblock %}
-<!-- <style>
-    .signup-button {
-        background-color: darkcyan;
-        color: white;
-        margin-top: 15px;
-        width: 80px;
-        height: 40px;
-        transition: opacity 0.4s;
-        border-radius: 40px;
-        font-size: large;
+
+<style>
+    .main-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid lightgray;
+        background-image: url('/media/extra_pics/images (1).jpeg');
+        background-repeat: no-repeat;
+        background-size:cover;
+        padding-bottom: 500px;
+    }
+    .student-link{
+        margin-bottom: 50px;
+    }
+    .student{
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 30px;
+        color: orange;
     }
 
-    .signup-button:hover {
-        opacity: 0.5;
+    .teacher-link{
+        margin-bottom: 50px;
+    }
+    .teacher{
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 30px;
+        color: lightsteelblue;
     }
 
-    .signupform {
-        margin-bottom: 20px;
-        border: 1px solid lightgr ay;
+
+    .login-link-div{
+        margin-bottom: 50px;
+    }
+
+    .login-link{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 15px;
-        background-color: lightgray;
+        color: peru;
     }
 
-    .login-link {
-        color: dodgerblue;
-        font-size: 25px;
+    .heading{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: white;
+    }
+
+    .heading-div{
+        margin-bottom: 50px;
     }
 </style>
-<div class="signupform">
-    <form method="post">
-        {%csrf_token%}
-        {{form.as_p}}
-        <button class="signup-button">Sign Up</button>
-    </form>
 
-</div> -->
 
-<a href="{%url 'loginapp:Student_Sign_Up'%}">I`m a student!</a>
+
+<div class="main-div">
+    <div class="heading-div">
+        <h1 class="heading">Choose Your Role!</h1>
+    </div>
+    <div class="student-link">
+        <a href="{%url 'loginapp:Student_Sign_Up'%}" class="student">I`m a student!</a>
+    </div>
+    <div class="teacher-link">
+        <a href="{%url 'loginapp:Teacher_Sign_Up'%}" class="teacher">I`m a Teacher!</a>
+    </div>
+    <div class="login-link-div">
+        <a href="{%url 'loginapp:Login'%}" class="login-link">Have a Freaking Account?</a>
+    </div>
+</div>
+
 <br>
-<a href="{%url 'loginapp:Teacher_Sign_Up'%}">I`m a Teacher!</a>
+
 <br>
-<a href="{%url 'loginapp:Login'%}" class="login-link">Have a Freaking Account?</a>
+
 {% endblock bodyblock %}
