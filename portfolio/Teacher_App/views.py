@@ -89,3 +89,8 @@ def notice_to_students(request):
 
     dict = {'form':form}
     return render(request,'teacher_app/notice.html',dict)
+
+
+@login_required(login_url='loginapp:Login')
+def teacher_options(request):
+    return render(request,'teacher_app/teacher_options.html')

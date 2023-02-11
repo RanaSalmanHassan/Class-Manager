@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Teacher Options</title>
+	<style>
+		body {
+			background-color: rgb(41, 41, 151);
+		}
+
+		.main-div {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin-top: 100px;
+
+
+		}
+
+		.list {
+			margin-bottom: 50px;
+			width: 1000px;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.list:hover {
+			background-color: lightblue;
+		}
+
+		a {
+			color: white;
+			font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+			font-size: 20px;
+		}
+
+		.heading-div {
+			position: fixed;
+			left: 0px;
+			top: 10px;
+		}
+		.heading{
+			font-size: 25px;
+			color: white;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		.a-heading{
+			text-decoration: none;
+		}
+		.a-heading:hover{
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="heading-div">
+		<a href="{%url 'teacher_app:teacher_home'%}" class="a-heading"><span class="heading">Class Manager</span></a>
+	</div>
+
+	<div class="main-div">
+		<div class="list">
+			<a href="{%url 'teacher_app:send_assignments'%}">Upload Assignment</a>
+		</div>
+		<div class="list">
+			<a href="{%url 'teacher_app:all_assignments'%}">Assignment List</a>
+		</div>
+		<div class="list">
+			<a href="">View Submission</a>
+		</div>
+		<div class="list">
+			<a href="">All Student List</a>
+		</div>
+		<div class="list">
+			<a href="{%url 'teacher_app:notice_to_students'%}">Write Notice</a>
+		</div>
+		<div class="list">
+			<a href="">Inbox</a>
+		</div>
+		<div class="list">
+			<a href="{%url 'loginapp:profile'%}">Profile</a>
+		</div>
+		<div class="list">
+			<a href="{%url 'loginapp:Logout'%}">Logout</a>
+		</div>
+
+	</div>
+
+</body>
+
+</html>

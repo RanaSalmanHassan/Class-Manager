@@ -16,13 +16,14 @@
 
 </head>
 
-<body>
+<body style="background-color: rgb(41, 41, 151);">
 
    {%include "navbar.html"%}
    <!-- THESE ARE ONLY FOR DISPLAYING MESSAGES i.e for updating profile,loggin out etc -->
+   {%if messages%}
    <div class="container" style="padding-top:20px;margin-left: 0px;">
       <div class="messages container mt-2">
-         {%if messages%}
+       
          {%for message in messages%}
          <div {%if message.tags%} class="alert alert-{{message.tags}}" {%endif%} role="alert">
             {{message}}
@@ -33,9 +34,10 @@
             </button>
          </div>
          {%endfor%}
-         {%endif%}
+         
       </div>
    </div>
+   {%endif%}
    {%block bodyblock%}
    {%endblock%}
 </body>

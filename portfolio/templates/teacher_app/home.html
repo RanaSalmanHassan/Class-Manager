@@ -1,11 +1,163 @@
 {% extends 'base.html' %}
 {% block titleblock %}
-Student Home
+Teacher Home
 {% endblock titleblock %}
 
 {% block bodyblock %}
 
-<h1>THIS IS TEACHER HOME!!</h1>
+<style>
+    body {
+        background-color: rgb(41, 41, 151);
+    }
+
+    .main-div {
+        display: grid;
+        grid-template-rows: 0.25fr 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .img-div {
+        position: relative;
+        margin-bottom: 0;
+    }
+
+    .image {
+        width: 1260px;
+    }
+
+    .image-text1 {
+        position: absolute;
+        top: 240px;
+        left: 450px;
+        font-size: 40px;
+        color: white;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .image-text2 {
+        position: absolute;
+        top: 275px;
+        left: 375px;
+        font-size: 40px;
+        color: white;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .about-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 0;
+    }
+
+    .about-heading {
+        font-size: 50px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: white;
+    }
+
+    .about-desc {
+        font-size: 25px;
+        color: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin-left: 90px;
+        margin-right: 90px;
+    }
+
+    .services-heading-div {
+        background-color: rgb(97, 51, 59);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .services-heading {
+        font-size: 50px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: white;
+    }
+
+    .services-desc-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .services-desc-img-div {
+        margin-top: 10px;
+    }
+
+    .services-desc-image {
+        border-radius: 20%;
+    }
+    .services-desc-text-div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 150px;
+    }
+    .services-desc-text-heading-div{
+        margin-bottom: 50px;
+        margin-top: 30px;
+    }
+    .services-desc-text-heading{
+        font-size: 35px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: white;
+
+    }
+
+    .services-desc-text-desc{
+        font-size: 25px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: white;
+    }
+</style>
+
+<div class="main-div">
+    <div class="img-div">
+        <img src="/media/extra_pics/classroom-good.jpeg" class="image">
+        <p class="image-text1">Class Manager</p>
+        <p class="image-text2">A Student-Teacher Portal</p>
+    </div>
+    <div class="about-div">
+        <div class="about-heading-div">
+            <span class="about-heading">About Us</span>
+        </div>
+        <div class="about-desc-div">
+            <p class="about-desc">Class Manager is a unique solution to daily hustles of student-teacher
+                life.Teachers can send
+                class notices and assignments while also checking asssignments from students and marking them.
+                Students can login
+                and collaborate witeh their teachers and can do many more things!</p>
+        </div>
+    </div>
+    <div class="services-div">
+        <div class="services-heading-div">
+            <span class="services-heading">Our Services</span>
+        </div>
+        <div class="services-desc-div">
+            <div class="services-desc-img-div">
+                <img src="/media/extra_pics/chart.png" class="services-desc-image">
+            </div>
+            <div class="services-desc-text-div">
+                <div class="services-desc-text-heading-div">
+                    <span class="services-desc-text-heading">Digital Learning</span>
+                </div>
+                <div class="services-desc-text-desc-div">
+                    <p class="services-desc-text-desc">We surveyed more than 20,0000 teachers world wide, quering them about all the necessities of a
+                        clas. We have built this class manager,containing all our experience, with all the features
+                        which a class needs! </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 

@@ -6,23 +6,132 @@ Profile
 
 {% block bodyblock %}
 
-<div
-    style="display: flex; justify-content: center; align-items: center;flex-direction: column; border: 1px solid lightgray; position: relative;">
-    <div style="width: 1fr;">
+
+<style>
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    body {
+        background-image: url('/media/extra_pics/download.jpeg');
+        background-size: cover;
+        background-repeat: no-repeat;
+
+    }
+
+    .main-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-top: 200px;
+    }
+
+    .rest-div {
+        background-color: rgb(224, 51, 94);
+        border-radius: 10%;
+    }
+
+    .heading {
+        color: white;
+        margin-left: 100px;
+        margin-right: 50px;
+        margin-top: 50px;
+    }
+
+    .subject-div,
+    .contact-div,
+    .email-div {
+        margin-top: 30px;
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .subject-desc,
+    .contact-desc,
+    .email-desc {
+        font-size: 20px;
+        color: white;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+
+    .subject-img,
+    .contact-img,
+    .email-img {
+        width: 20px;
+        height: 30px;
+        border-radius: 10px;
+        margin-right: 7px;
+    }
+
+    .email-div {
+        margin-bottom: 10px;
+    }
+
+    .img-div {
+        position: absolute;
+        top: -20px;
+    }
+
+    .img {
+        width: 100px;
+        height: 60px;
+        border-radius: 50px;
+        border: none;
+    }
+
+    .edit-profile {
+        margin-left: 90px;
+        background-color: blue;
+        color: white;
+        border: none;
+        width: 100px;
+        border-radius: 5%;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        margin-bottom: 20px;
+        margin-top: 0px;
+    }
+</style>
+
+
+
+<div class="main-div">
+    <div class="img-div">
         {%if Student.profile_pic%}
-        <img src="{{Student.profile_pic.url}}" style="width: 400px; border-radius: 200px;">
+        <img src="{{Teacher.profile_pic.url}}" class="img">
         {%else%}
-        <img src="/media/student_profile/user.png" alt="">
+        <img src="/media/student_profile/user.png" class="img">
         {%endif%}
     </div>
-    <div>
-        <p style="font-size: 30px;">Username : {{user.username}}</p>
-        <p style="font-size: 30px;">Contact Num : {{Student.contact_num}}</p>
-    </div>
-    <a href="{%url 'loginapp:edit_profile'%}" style="position: fixed; right: 50px; top: 120px; position: absolute;"><button
-            class="btn btn-outline-primary">Edit Profile!</button></a>
-</div>
 
+    <div class="rest-div">
+        <div class="heading-div">
+            <h1 class="heading">{{user.username}}</h1>
+        </div>
+
+        <div class="contact-div">
+            <img src="/media/extra_pics/phone.png" class="contact-img">
+            <p class="contact-desc">Phone : {{Student.contact_num}}</p>
+        </div>
+
+        <div class="email-div">
+            <img src="/media/extra_pics/email.png" class="email-img">
+            <p class="email-desc">Email : {{user.email}}</p>
+        </div>
+
+        <div class="edit-profile-div">
+            <a href="{%url 'loginapp:edit_profile'%}"><button class="edit-profile" type="submit">Edit
+                    Profile!</button></a>
+        </div>
+    </div>
+</div>
 
 
 {% endblock bodyblock %}

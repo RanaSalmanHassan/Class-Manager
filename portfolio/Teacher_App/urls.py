@@ -9,4 +9,5 @@ urlpatterns = [
 	path('send_assignments', views.send_assignments, name='send_assignments'),
 	path('all_assignments', views.all_assignments, name='all_assignments'),
 	path('notice_to_students', views.notice_to_students, name='notice_to_students'),
+	path('teacher_options', views.teacher_options, name='teacher_options'),
 ]
