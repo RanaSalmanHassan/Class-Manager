@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block titleblock %}
+All Assignments
+{% endblock titleblock %}
+
+{% block bodyblock %}
+
+<style>
+	.main-row{
+		background-color: rgb(48, 46, 46);
+	}
+    .main-div{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    .heading{
+        color: white;
+    }
+</style>
+<div class="main-div">
+<table class="table">
+    <thead>
+        <tr class="main-row">
+            <th scope="col" class="heading">#</th>
+            <th scope="col" class="heading">Assignment Name</th>
+            <th scope="col" class="heading">Uploaded By</th>
+            <th scope="col" class="heading">Uploaded Date</th>
+            <th scope="col" class="heading">Download</th>
+            <th scope="col" class="heading">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for x in all_assignments_for_students%}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{x.title}}</td>
+            <td>{{x.teacher}}</td>
+            <td>{{x.date_added}}</td>
+            <td><a href="{{x.assignment.url}}"><button class="btn btn-primary">Download</button></a></td>
+            <td><button class="btn btn-warning">Submit</button></td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+</div>
+
+{% endblock bodyblock %}

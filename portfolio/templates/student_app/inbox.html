@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block titleblock %}
+Student Home
+{% endblock titleblock %}
+
+{% block bodyblock %}
+<!-- 
+<h2>Sent Messages:</h2>
+{% for message in sent_messages %}
+<div style="border: 1px solid lightgray; width: 300px;">
+    <p style="font-weight: bold; text-decoration: underline;">To: {{ message.user_reciever }}</p>
+    <p>Date: {{ message.date_messaged }}</p>
+    <p>Message: {{ message.message }}</p>
+     {% if message.attachments %}
+    <p>Attachments: <a href="{{ message.attachments.url }}">{{ message.attachments.name }}</a></p>
+  {% endif %}
+</div>
+{%empty%}
+<h3>No Messages Sent!</h3>
+{% endfor %}
+
+<h2>Received Messages:</h2>
+{% for message in recieved_messages %}
+<div style="border: 1px solid lightgray; width: 300px;">
+    <p style="font-weight: bold; text-decoration: underline;">From: {{ message.user_sender }}</p>
+    <p>Date: {{ message.date_messaged }}</p>
+    <p>Message: {{ message.message }}</p>
+    {% if message.attachments %}
+    <p>Attachments: <a href="{{ message.attachments.url }}">{{ message.attachments.name }}</a></p>
+    {% endif %}
+</div>
+{%empty%}
+<h3>No Messages Recieved!</h3>
+{% endfor %} -->
+
+<style>
+    .main-div {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        border: 1px solid lightgray;
+        position: relative;
+        margin-top: 20px;
+    }
+
+    .text-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .profile-pic {
+        width: 50px;
+        height: 40px;
+        border-radius: 25px;
+    }
+
+    .user_sender {
+        font-weight: bold;
+        font-style: italic;
+        text-decoration: underline;
+        font-size: 20px;
+    }
+
+    .date-div {
+        position: absolute;
+        color: rgb(0, 255, 0);
+        right: 40px;
+        top: 0;
+    }
+
+    .link-div {
+        position: absolute;
+        right: 40px;
+        top: 20px;
+    }
+</style>
+<a href="{%url 'student_app:message_to_teacher'%}"><button class="btn btn-outline-danger">Send Message</button></a>
+
+{%for x in recieved_messages%}
+<div class="main-div">
+
+    <div class="img-div">
+        {%if x.profile_pic%}
+        <img src="{{x.profile_pic.url}}" class="profile-pic">
+        {%else%}
+        <img src="/media/student_profile/user.png" class="profile-pic">
+        {%endif%}
+    </div>
+
+    <div class="text-div">
+        <div class="heading-div">
+            <span class="user_sender">Sent By : {{x.user_sender}}</span>
+        </div>
+        <div class="description-div">
+            {{x.message}}
+        </div>
+    </div>
+    <div class="date-div">
+        {{x.date_messaged}}
+    </div>
+    <div class="link-div">
+        {%if x.attachments%}
+        <a href="{{x.attachments.url}}">Attachments</a>
+        {%else%}
+        <a href="">No Attachments</a>
+        {%endif%}
+    </div>
+</div>
+{%endfor%}
+
+
+
+{% endblock bodyblock %}

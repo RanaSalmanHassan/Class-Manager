@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block titleblock %}
+All Teachers
+{% endblock titleblock %}
+
+{% block bodyblock %}
+
+<style>
+	.main-row{
+		background-color: rgb(48, 46, 46);
+	}
+    .main-div{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-top: 100px;
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    .heading{
+        color: white;
+    }
+</style>
+<div class="main-div">
+<table class="table">
+    <thead>
+        <tr class="main-row">
+            <th scope="col" class="heading">#</th>
+            <th scope="col" class="heading">Profile Pic</th>
+            <th scope="col" class="heading">Name</th>
+            <th scope="col" class="heading">Subject</th>
+            <th scope="col" class="heading">Contact Num</th>
+            <th scope="col" class="heading">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for x in all_teachers_of_school%}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>
+                {%if x.profile_pic%}
+                <img src="{{x.profile_pic.url}}" style="width:30px; height: 20px; border-radius: 15px;">
+                {%else%}
+                <img src="/media/student_profile/user.png" style="width:30px; height:20px; border-radius:15px;">
+                {%endif%}
+            </td>
+            <td>{{x.teacher}}</td>
+            <td>{{x.subject}}</td>
+            <td>{{x.contact_num}}</td>
+            <td>{{x.teacher.email}}</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+</div>
+
+{% endblock bodyblock %}

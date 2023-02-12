@@ -1,86 +1,4 @@
-<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
-   <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav me-auto mb-2 mb-lg-0"
-            style="display: flex; justify-content: center; align-content: center;">
-            {%if user.is_authenticated%}
-            {%if user.is_student%}
-            <li class="nav-item">
-               <a class="nav-link active" aria-current="page" href="{%url 'student_app:student_home'%}">Home</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="{%url 'loginapp:Logout'%}">Logout</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="{%url 'student_app:message_to_teacher'%}">Message</a>
-            </li>
-            {%if user.student_profile.profile_pic %}
-            <li class="nav-item">
-               <a class="nav-link" href="{%url 'loginapp:profile'%}" style="margin-left: 600px;"><img
-                     src="{{user.student_profile.profile_pic.url}}"
-                     style="width: 50px;height: 40px; border-radius: 25px;"></a>
-            </li>
-            {%else%}
-            <li class="nav-item">
-               <a class="nav-link" href="{%url 'loginapp:profile'%}" style="margin-left: 600px;"><img
-                     src="/media/student_profile/user.png" style="width:30px"></a>
-            </li>
-            {%endif%}
 
-            <li class="nav-item">
-               <a class="nav-link" href="{%url 'student_app:messages_all'%}"><img
-                     src="/media/student_profile/download.png" style="width: 30px; height: 30px;"></a>
-            </li>
-
-            {%else%}
-            <li class="nav-item">
-               <a class="nav-link active" aria-current="page" href="{%url 'teacher_app:teacher_home'%}">Home</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="{%url 'loginapp:Logout'%}">Logout</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link" href="{%url 'teacher_app:message_to_student'%}">Message</a>
-            </li>
-            {%if user.teacher_profile.profile_pic %}
-            <li class="nav-item">
-               <a class="nav-link" href="{%url 'loginapp:profile'%}" style="margin-left: 600px;"><img
-                     src="{{user.teacher_profile.profile_pic.url}}"
-                     style="width: 50px;height: 40px; border-radius: 25px;"></a>
-            </li>
-            {%else%}
-            <li class="nav-item">
-               <a class="nav-link" href="{%url 'loginapp:profile'%}" style="margin-left: 600px;"><img
-                     src="/media/student_profile/user.png" style="width:30px"></a>
-            </li>
-            {%endif%}
-
-            <li class="nav-item">
-               <a class="nav-link" href="{%url 'teacher_app:messages_all'%}"><img
-                     src="/media/student_profile/download.png" style="width: 30px; height: 30px;"></a>
-            </li>
-            {%endif%}
-            {%else%}
-            <li class="nav-item">
-               <a class="nav-link" href="{%url 'loginapp:SignUp'%}">Sign Up!</a>
-            </li>
-            <li class="nav-item">
-               <a href="{%url 'loginapp:Login'%}" class="nav-link">Login!</a>
-            </li>
-            {%endif%}
-         </ul>
-         <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-         </form>
-      </div>
-   </div>
-</nav> -->
 <style>
    .main-navbar {
       background-color: rgb(41, 41, 151);
@@ -92,7 +10,8 @@
    .title {
       color: white;
    }
-   .menu{
+
+   .menu {
       width: 30px;
       color: white;
       border: none;
@@ -102,17 +21,22 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary" style="margin: 0px; padding: 0px;">
    <div class="container-fluid  main-navbar">
-      <a class="navbar-brand title">Class Manager</a>
+
       {%if user.is_authenticated%}
       {%if user.is_teacher%}
-      <a href="{%url 'teacher_app:teacher_options'%}" style="background-color:rgb(41, 41, 151);"><img src="/media/extra_pics/download.png" class="menu"></a>
+      <a class="navbar-brand title" href="{%url 'teacher_app:teacher_home'%}">Class Manager</a>
+      <a href="{%url 'teacher_app:teacher_options'%}" style="background-color:rgb(41, 41, 151);"><img
+            src="/media/extra_pics/download.png" class="menu"></a>
       {%elif user.is_student%}
-      <a href="{%url 'student_app:student_options'%}" style="background-color:rgb(41, 41, 151);"><img src="/media/extra_pics/download.png" class="menu"></a>
+      <a class="navbar-brand title" href="{%url 'student_app:student_home'%}">Class Manager</a>
+      <a href="{%url 'student_app:student_options'%}" style="background-color:rgb(41, 41, 151);"><img
+            src="/media/extra_pics/download.png" class="menu"></a>
       {%endif%}
       {%else%}
+      <a class="navbar-brand title">Class Manager</a>
       <a href="" style="background-color:rgb(41, 41, 151);"><img src="/media/extra_pics/download.png" class="menu"></a>
       {%endif%}
-      
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
